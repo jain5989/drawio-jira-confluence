@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uploads
+uploads/
+temp/
+
+# Config
+config.json
+.env
+*.local
+
+# Logs
+*.log
+logs/
+
+# Test files
+test_*.drawio
+test_*.xml
+test_*.mmd

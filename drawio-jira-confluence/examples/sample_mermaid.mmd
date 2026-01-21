@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant Database
+    
+    User->>Frontend: Open application
+    Frontend->>API: Request data
+    API->>Database: Query records
+    Database-->>API: Return results
+    API-->>Frontend: Send response
+    Frontend-->>User: Display data
