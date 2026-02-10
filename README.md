@@ -410,6 +410,30 @@ docker build -t drawio-processor .
 docker run -p 5000:5000 drawio-processor
 ```
 
+## 🚀 Deployment Pipeline
+
+This project includes automated deployment pipelines for Dev, QA, and Production environments.
+
+### Pipeline Overview
+
+**For Pull Requests:**
+- Manual deployment to **Dev** environment available for testing PR changes
+- Requires approval before deployment
+
+**For Main Branch (after merge):**
+- **Dev**: Automatically deployed when code is merged to main
+- **QA**: Manual approval required after Dev deployment succeeds
+- **Prod**: Manual approval required after QA deployment succeeds
+
+### Setup Instructions
+
+1. Configure GitHub Environments in repository Settings → Environments
+2. Create three environments: `dev`, `qa`, `prod`
+3. Add required reviewers for manual approval gates
+4. Configure environment-specific secrets if needed
+
+For detailed setup and usage instructions, see [.github/workflows/DEPLOYMENT_GUIDE.md](.github/workflows/DEPLOYMENT_GUIDE.md)
+
 ## 🤝 Contributing
 
 1. Fork the repository
