@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
@@ -68,12 +68,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
           cd drawio-jira-confluence/backend
           pip install -r requirements.txt
+      
+      - name: Validate application
+        run: |
+          echo "Validating application..."
+          # Check if Python files have syntax errors
+          python -m py_compile drawio-jira-confluence/backend/app.py
+          echo "✓ Python syntax validation passed"
+          
+          # Add your test commands here when tests are available
+          # Example: cd drawio-jira-confluence/backend && pytest tests/
       
       - name: Deploy to QA Environment
         run: |
@@ -105,12 +115,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
           cd drawio-jira-confluence/backend
           pip install -r requirements.txt
+      
+      - name: Validate application
+        run: |
+          echo "Validating application..."
+          # Check if Python files have syntax errors
+          python -m py_compile drawio-jira-confluence/backend/app.py
+          echo "✓ Python syntax validation passed"
+          
+          # Add your test commands here when tests are available
+          # Example: cd drawio-jira-confluence/backend && pytest tests/
       
       - name: Deploy to Prod Environment
         run: |
