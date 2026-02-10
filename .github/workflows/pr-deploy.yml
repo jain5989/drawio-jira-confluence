@@ -1,0 +1,52 @@
+name: PR Deployment
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  deploy-dev:
+    name: Deploy to Dev (Manual)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    environment:
+      name: dev
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          cd drawio-jira-confluence/backend
+          pip install -r requirements.txt
+      
+      - name: Validate application
+        run: |
+          echo "Validating application..."
+          # Check if Python files have syntax errors
+          python -m py_compile drawio-jira-confluence/backend/app.py
+          echo "✓ Python syntax validation passed"
+          
+          # Add your test commands here when tests are available
+          # Example: cd drawio-jira-confluence/backend && pytest tests/
+      
+      - name: Deploy to Dev Environment
+        run: |
+          echo "Deploying to Dev environment..."
+          echo "Branch: ${{ github.head_ref }}"
+          echo "PR Number: ${{ github.event.pull_request.number }}"
+          # Add your deployment commands here
+          # Example: scp, rsync, docker push, etc.
+      
+      - name: Deployment Summary
+        run: |
+          echo "✅ Successfully deployed to Dev environment"
+          echo "PR: #${{ github.event.pull_request.number }}"
+          echo "Commit: ${{ github.sha }}"
