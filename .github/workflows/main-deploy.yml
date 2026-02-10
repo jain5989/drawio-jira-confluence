@@ -9,6 +9,8 @@ jobs:
   deploy-dev:
     name: Deploy to Dev (Automatic)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     environment:
       name: dev
     
@@ -54,6 +56,8 @@ jobs:
     name: Deploy to QA (Manual)
     runs-on: ubuntu-latest
     needs: deploy-dev
+    permissions:
+      contents: read
     environment:
       name: qa
     
@@ -89,6 +93,8 @@ jobs:
     name: Deploy to Prod (Manual)
     runs-on: ubuntu-latest
     needs: deploy-qa
+    permissions:
+      contents: read
     environment:
       name: prod
     

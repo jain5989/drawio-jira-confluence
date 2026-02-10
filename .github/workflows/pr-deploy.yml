@@ -8,6 +8,8 @@ jobs:
   deploy-dev:
     name: Deploy to Dev (Manual)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     environment:
       name: dev
     
