@@ -25,10 +25,15 @@ jobs:
           cd drawio-jira-confluence/backend
           pip install -r requirements.txt
       
-      - name: Run tests (if any)
+      - name: Validate application
         run: |
-          echo "Running tests..."
-          # Add your test commands here
+          echo "Validating application..."
+          # Check if Python files have syntax errors
+          python -m py_compile drawio-jira-confluence/backend/app.py
+          echo "✓ Python syntax validation passed"
+          
+          # Add your test commands here when tests are available
+          # Example: cd drawio-jira-confluence/backend && pytest tests/
       
       - name: Deploy to Dev Environment
         run: |
